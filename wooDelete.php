@@ -14,7 +14,7 @@ $prefix = "wp_";
 
 // Database infos here
 $host = "localhost";
-$user = "user";
+$username = "user";
 $password = "password";
 $db = "dbname";
 
@@ -46,7 +46,7 @@ if ($conn->query($sql) === TRUE) {
 
 
 
-$sql = "DELETE FROM " . $prefix . "_posts WHERE post_type = 'shop_order'";
+$sql = "DELETE FROM " . $prefix . "posts WHERE post_type = 'shop_order'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Deleted posts where post_type = 'shop_order'" . PHP_EOL;
