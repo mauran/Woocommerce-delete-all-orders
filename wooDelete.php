@@ -56,6 +56,16 @@ if ($conn->query($sql) === true) {
 
 
 
+$sql = "DELETE FROM ".$prefix."postmeta WHERE post_id IN ( SELECT ID FROM ".$prefix."posts WHERE post_type = 'shop_order' )";
+
+if ($conn->query($sql) === true) {
+    echo "Deleted all rows from postmeta which belonged to posts with post_type = 'shop_order'".PHP_EOL;
+} else {
+    echo 'Whoops: '.$conn->error;
+}
+
+
+
 $sql = 'DELETE FROM '.$prefix."posts WHERE post_type = 'shop_order'";
 
 if ($conn->query($sql) === true) {
