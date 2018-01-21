@@ -46,6 +46,16 @@ if ($conn->query($sql) === true) {
 
 
 
+$sql = 'DELETE FROM '.$prefix."comments WHERE comment_type = 'order_note'";
+
+if ($conn->query($sql) === true) {
+    echo "Deleted comments where comment_type = 'order_note'".PHP_EOL;
+} else {
+    echo 'Whoops: '.$conn->error;
+}
+
+
+
 $sql = 'DELETE FROM '.$prefix."posts WHERE post_type = 'shop_order'";
 
 if ($conn->query($sql) === true) {
