@@ -20,11 +20,9 @@ $db = 'dbname';
 
 $conn = new mysqli($host, $username, $password, $db);
 
-
 if ($conn->connect_error) {
     die('Whoops: '.$conn->connect_error);
 }
-
 
 $sql = 'DELETE FROM '.$prefix.'woocommerce_order_itemmeta';
 
@@ -34,8 +32,6 @@ if ($conn->query($sql) === true) {
     echo 'Whoops: '.$conn->error;
 }
 
-
-
 $sql = 'DELETE FROM '.$prefix.'woocommerce_order_items';
 
 if ($conn->query($sql) === true) {
@@ -43,8 +39,6 @@ if ($conn->query($sql) === true) {
 } else {
     echo 'Whoops: '.$conn->error;
 }
-
-
 
 $sql = 'DELETE FROM '.$prefix."comments WHERE comment_type = 'order_note'";
 
@@ -54,17 +48,13 @@ if ($conn->query($sql) === true) {
     echo 'Whoops: '.$conn->error;
 }
 
-
-
-$sql = "DELETE FROM ".$prefix."postmeta WHERE post_id IN ( SELECT ID FROM ".$prefix."posts WHERE post_type = 'shop_order' )";
+$sql = 'DELETE FROM '.$prefix.'postmeta WHERE post_id IN ( SELECT ID FROM '.$prefix."posts WHERE post_type = 'shop_order' )";
 
 if ($conn->query($sql) === true) {
     echo "Deleted all rows from postmeta which belonged to posts with post_type = 'shop_order'".PHP_EOL;
 } else {
     echo 'Whoops: '.$conn->error;
 }
-
-
 
 $sql = 'DELETE FROM '.$prefix."posts WHERE post_type = 'shop_order'";
 
